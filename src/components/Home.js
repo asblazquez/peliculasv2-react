@@ -37,7 +37,7 @@ const Home = () => {
     <div className="pt-20">
       {loader ? <Loader /> : null}
       <p className="text-white font-bold text-xl ml-5">Peliculas</p>
-      <div className="mt-3 grid grid-cols-1 md:grid-cols-8 lg:grid-cols-10 gap-5 px-5 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-5 px-5 mb-10">
         {
           listFilms.map((element, index) => {
             if (element.poster_path === null) {
@@ -58,7 +58,7 @@ const Home = () => {
         }
       </div>
       <p className="text-white font-bold text-xl mt-5 ml-5">Series</p>
-      <div className="mt-3 grid grid-cols-1 md:grid-cols-8 lg:grid-cols-10 gap-5 px-5 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-5 px-5 mb-10 mt-3">
         {
           listSeries.map((element, index) => {
             if (element.poster_path === null) {
