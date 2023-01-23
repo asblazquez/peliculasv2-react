@@ -15,13 +15,13 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path='/peliculasv2-react/' element={<Home />} />
-        <Route path='/peliculasv2-react/Search' element={<Search />} />
-        <Route path='/peliculasv2-react/Films' element={<Films />} />
-        <Route path='/peliculasv2-react/Series' element={<Series />} />
-        <Route path='/peliculasv2-react/Pelicula/:id' element={<Pelicula />} />
-        <Route path='/peliculasv2-react/Serie/:id' element={<Serie />} />
-        <Route path='/peliculasv2-react/Episodio/:id/:season/:episode' element={<Episodio />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/Search' element={<Search />} />
+        <Route path='/Films' element={<Films />} />
+        <Route path='/Series' element={<Series />} />
+        <Route path='/Pelicula/:id' element={<Pelicula />} />
+        <Route path='/Serie/:id' element={<Serie />} />
+        <Route path='/Episodio/:id/:season/:episode' element={<Episodio />} />
       </Routes>
       <Footer />
     </BrowserRouter>
