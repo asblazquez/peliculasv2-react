@@ -8,12 +8,9 @@ import Loader from "./subComponents/Loader"
 const Search = () => {
 
     const api_key = "3ad3c5861f62921ba8cb86c9f5e85044";
-    const searchMovie_url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&language=es-ES&query=`;
-    const searchSerie_url = `https://api.themoviedb.org/3/search/tv?api_key=${api_key}&language=es-ES&query=`;
 
     const [value, setBusqueda] = useState('')
     const [list, setResultado] = useState([])
-    const [isFilm, setFilm] = useState(true)
     const [loader, setLoader] = useState(false)
 
     const handleChange = ({ target }) => {
@@ -26,7 +23,7 @@ const Search = () => {
             alert('El campo de busqueda es obligatorio')
         } else {
             setLoader(true)
-            const url = (isFilm ? searchMovie_url : searchSerie_url) + value;
+            const url = `https://api.themoviedb.org/3/search/multi?api_key=${api_key}&language=es-ES&query=${value}&page=1&include_adult=false`;
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
@@ -39,7 +36,6 @@ const Search = () => {
     return (
         <div className="pt-20">
             {loader ? <Loader /> : null}
-            <RadioButton setFilm={setFilm} handleSubmit={handleSubmit} />
             <div className="grid grid-cols-8 gap-5 p-10 content-center">
                 <form className="mb-3 pt-0 text-right col-start-2 col-span-5" onSubmit={handleSubmit}>
                     <input id="inputField" type="text" value={value} placeholder="Nombre de la Pelicula/Serie"
@@ -57,7 +53,7 @@ const Search = () => {
                     </button>
                 </div>
             </div>
-            {list.length === 0 ? <NoResult /> : <Card list={list} isFilm={isFilm} />}
+            {list.length === 0 ? <NoResult /> : <Card list={list} />}
         </div>
 
     )
@@ -65,7 +61,8 @@ const Search = () => {
 
 export default Search
 
-function Card({ list, isFilm }) {
+function Card({ list }) {
+    console.log(list)
     return (
         <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-10 gap-5 px-5">
             {
@@ -73,12 +70,16 @@ function Card({ list, isFilm }) {
                     if (element.poster_path === null) {
                         return null
                     } else {
+                        console.log(element)
                         return (
-                            <CardFilm img={`https://image.tmdb.org/t/p/original/${element.poster_path}`}
-                                filmName={element.title}
-                                voteAverage={element.vote_average}
-                                route={isFilm ? 'Pelicula' : 'Serie'}
+                            <CardFilm img={`https://image.tmdb.org/t/p/original/${element.media_type == 'person' ? element.profile_path : element.poster_path}`}
+                                filmName={element.title == null ? element.name : element.title}
+                                voteAverage={element.media_type == 'person' ? element.popularity : element.vote_average}
+                                route={element.media_type == 'person' ? 'Actor' : (element.media_type == 'movie' ? 'Pelicula' : 'Serie')}
                                 id={element.id}
+                                showRate={true}
+                                season={null}
+                                episode={null}
                                 key={index} />
                         );
                     }

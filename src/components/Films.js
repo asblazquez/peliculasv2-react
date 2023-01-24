@@ -41,6 +41,7 @@ const Films = () => {
                                     route={'Pelicula'}
                                     season={null}
                                     episode={null}
+                                    showRate={true}
                                     key={index} />
                             );
                         }

@@ -40,6 +40,7 @@ const Series = () => {
                                     route={'Serie'}
                                     season={null}
                                     episode={null}
+                                    showRate={true}
                                     key={index} />
                             );
                         }

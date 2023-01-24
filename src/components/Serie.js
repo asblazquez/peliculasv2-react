@@ -116,7 +116,7 @@ const Serie = () => {
             {Array.isArray(details.seasons) ?
                 <DropDown list={details.seasons} setSeason={setSeason} season={season} /> :
                 null}
-            <div className="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-10 gap-5 px-5 mb-10">
+            <div className="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-10 gap-5 px-5 mb-10 mt-5">
                 {Array.isArray(seasonDetails.episodes) && seasonDetails.episodes.map((element, index) => {
                     if (element.poster_path === null) {
                         return null
@@ -129,6 +129,7 @@ const Serie = () => {
                                 route={'Episodio'}
                                 season={element.season_number}
                                 episode={element.episode_number}
+                                showRate={false}
                                 key={index} />
                         );
                     }

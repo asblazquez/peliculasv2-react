@@ -32,7 +32,7 @@ const Home = () => {
     getPopularFilms()
     getPopularSeries()
   }, [latestFilms_url, popularSeries_url])
-  console.log(listSeries)
+
   return (
     <div className="pt-20">
       {loader ? <Loader /> : null}
@@ -51,6 +51,7 @@ const Home = () => {
                   route={'Pelicula'}
                   season={null}
                   episode={null}
+                  showRate={true}
                   key={index} />
               );
             }
@@ -72,6 +73,7 @@ const Home = () => {
                   route={'Serie'}
                   season={null}
                   episode={null}
+                  showRate={true}
                   key={index} />
               );
             }

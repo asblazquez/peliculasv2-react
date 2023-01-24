@@ -140,13 +140,14 @@ const Pelicula = () => {
                                     route={'Pelicula'}
                                     season={null}
                                     episode={null}
+                                    showRate={false}
                                     key={index} />
                             );
                         }
                     })
                 }
             </div>
-        </div >
+        </div>
 
     )
 }

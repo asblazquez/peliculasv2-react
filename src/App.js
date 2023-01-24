@@ -9,6 +9,7 @@ import Pelicula from './components/Pelicula';
 import Serie from './components/Serie';
 import Footer from './components/Footer';
 import Episodio from './components/Episodio';
+import Actor from './components/Actor';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/Pelicula/:id' element={<Pelicula />} />
         <Route path='/Serie/:id' element={<Serie />} />
         <Route path='/Episodio/:id/:season/:episode' element={<Episodio />} />
+        <Route path='/Actor/:id' element={<Actor />} />
       </Routes>
       <Footer />
     </BrowserRouter>
